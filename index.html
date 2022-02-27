@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<label for="input">
+  <input value="" id="input" />
+</label>
+<button
+  id="button"
+>send message to content script</button>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('button');
+    const input = document.getElementById('input');
+    btn.addEventListener('click', function () {
+      window.postToContentScript('log', {
+        msg: input.getAttribute('value')
+      })
+    })
+  })
+</script>
+</html>
